@@ -1,8 +1,10 @@
 #!/bin/bash
 # csv_compare.sh
 # Inputs: pairs of csv filename and column to use for that file.
-# Currently configured to work with 3 files - modify the declared arrays below to work with more files, or change the combinations to be checked.
-# Output: comparison files for the pairs of files initialised below, using the columns specified, along with a report of number of lines for each.
+# Currently configured to work with 3 files - modify the declared arrays below to work with more files, 
+# or change the combinations to be checked.
+# Output: comparison files for the pairs of files initialised below, using the columns specified, 
+# along with a report of number of lines for each.
 # WARNING: zero protection against malicious inputs!
 
 # Initialise the input files and columns to loop for data cleaning.
@@ -11,7 +13,8 @@ declare -a aInputNames=("A" "B" "C")
 declare -a aInputColumnToUse=($2 $4 $6)
 iInputs=${#aInputFiles[@]}
 
-#Initalise the combinations to be checked - each round of the loop, we will check the combination of same indexed element from both arrays.
+#Initalise the combinations to be checked - each round of the loop, we will check the combination of 
+# same indexed element from both arrays.
 declare -a aPairsToCompare1=("A" "A" "B" "AB" "AC" "BC")
 declare -a aPairsToCompare2=("B" "C" "C" "C" "B" "A")
 iOutputs=${#aPairsToCompare1[@]}
@@ -33,7 +36,8 @@ do
    rm -f $sTempFileName
 done
 
-# Loop the pairs, do a diff that shows the three possibilities (in both, in file1 only, in file2 only), then split this into the three needed output files.
+# Loop the pairs, do a diff that shows the three possibilities (in both, in file1 only, in file2 only), 
+# then split this into the three needed output files.
 sTempDiffFile="CompareOutput/diff.txt"
 for (( i=0; i<$iOutputs; i++ ))
 do
